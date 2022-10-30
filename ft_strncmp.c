@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 17:38:13 by mtoof             #+#    #+#             */
-/*   Updated: 2022/10/28 19:02:35 by mtoof            ###   ########.fr       */
+/*   Created: 2022/10/28 16:04:47 by mtoof             #+#    #+#             */
+/*   Updated: 2022/10/28 16:37:16 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*str;
-
-	str = (char *)s;
-	while (n--)
+	while (n-- && *s1)
 	{
-		if (!*str)
-			return (0);
-		else if (*str == (unsigned char)c)
-			return (str);
-		str++;
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
 	}
-
+	return (0);
 }
 
 // int	main(void)
 // {
-// 	char	str1[] = "hello world";
+// 	char	str1[] = "helo0";
+// 	char	str2[] = "hel";
 
-// 	printf("%s", ft_memchr(str1, 'w', 10));
+// 	printf("%d\n", ft_strncmp(str1, str2, 15));
+// 	printf("%d", strncmp(str1, str2, 15));
+
 // 	return (0);
 // }

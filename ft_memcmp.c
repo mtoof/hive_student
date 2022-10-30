@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 16:04:47 by mtoof             #+#    #+#             */
-/*   Updated: 2022/10/28 16:37:16 by mtoof            ###   ########.fr       */
+/*   Created: 2022/10/29 23:37:30 by mtoof             #+#    #+#             */
+/*   Updated: 2022/10/29 23:37:30 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int				i;
-	unsigned int	result;
-
-	i = 0;
-	while (i <= n)
+	while (n--)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
+		if (*(unsigned char *)s1 != *(unsigned char *)s2)
+			return (*(unsigned char *)s1 - *(unsigned char *)s2);
+		++s1;
+		++s2;
 	}
 	return (0);
 }
 
-// int	main(void)
+// int main(void)
 // {
-// 	char	str1[] = "hello";
-// 	char	str2[] = "helle";
+// 	char	str[] = "Hello world";
+// 	char	str2[] = "Hell";
 
-// 	printf("%d", strncmp(str1, str2, 5));
+// 	printf("%d\n",ft_memcmp(str, str2, 15));
+// 	printf("%d\n",memcmp(str, str2, 15));
+
 // 	return (0);
 // }
