@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:03:17 by mtoof             #+#    #+#             */
-/*   Updated: 2022/10/27 15:44:04 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/04 15:12:58 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,10 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 // int	main(void)
 // {
-// 	char		dest[10] = "oldst";
-// 	char	src[12] = "newstring";
+// 	char	src[10] = "newstring";
 
-// 	// printf("%s",memmove(src + 2, src, 5));
-// 	printf("%s",ft_memmove(src + 2, src, 15));
+// 	printf("my memmove :   %s\n",ft_memmove(src + 2, src, 5));
+// 	// printf("Real memmove : %s\n",memmove(src + 2, src, 5));
 // 	// ft_memmove(dest, dest + 2, 2);
 
 // 	return (0);

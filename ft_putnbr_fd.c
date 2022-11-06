@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 11:27:53 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/04 15:13:13 by mtoof            ###   ########.fr       */
+/*   Created: 2022/08/15 12:26:07 by mtoof             #+#    #+#             */
+/*   Updated: 2022/11/04 16:27:40 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include	"libft.h"
 
-int	ft_isprint(int c)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	if (nb == -2147483648)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putchar_fd('2', fd);
+		nb = 147483648;
+	}
+	if (nb < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nb = -nb;
+	}
+	if (nb < 10)
+		ft_putchar_fd(nb + '0', fd);
+	if (nb >= 10)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putchar_fd(nb % 10 + '0', fd);
+	}
 }

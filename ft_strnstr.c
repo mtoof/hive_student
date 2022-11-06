@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 00:00:11 by mtoof             #+#    #+#             */
-/*   Updated: 2022/10/30 00:00:11 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/04 17:25:39 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,36 @@
 
 char	*ft_strnstr(const char	*big, const char	*little, size_t len)
 {
-	
-	int		i, j;
-	char	*str;
+	size_t	h_index;
+	size_t	l_index;
+	char	*hey;
 
-	str = (char *)big;
-	i = 0;
-	j = 0;
-	if (!*little)
-		return ((char *)big);
-	while (len-- && *big && *little)
+	hey = (char *)big;
+	h_index = 0;
+	if (!len && *little)
+		return (0);
+	if (!little[0] || len == 0)
+		return (hey);
+	while (h_index < len && hey[h_index])
 	{
-		if (big[i] == little[j])
-		{
-			str += i;
-			i++;
-			j++;
-		}
-		i++;
+		l_index = 0;
+		while (hey[h_index + l_index] && little[l_index]
+			&& h_index + l_index < len
+			&& hey[h_index + l_index] == little[l_index])
+			l_index++;
+		if (!little[l_index])
+			return (hey + h_index);
+		h_index++;
 	}
-
-	return (str);
+	return ((void *)0);
 }
 
-int main(void)
-{
-	char	str[] = "hello world";
-	char	str2[] = "fd";
+// int	main(void)
+// {
+// 	char	str[] = "hello world";
+// 	char	str2[] = "wo";
 
-	printf("%s\n", ft_strnstr(str, str2, 10));
-	printf("%s", strnstr(str, str2, 10));
-
-	return (0);
-}
+// 	printf("%s\n", ft_strnstr(str, str2, 10));
+// 	// printf("%s", strnstr(str, str2, 12));
+// 	return (0);
+// }

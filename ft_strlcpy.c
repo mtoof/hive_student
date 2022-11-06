@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:22:13 by mtoof             #+#    #+#             */
-/*   Updated: 2022/10/28 14:47:30 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/04 15:12:32 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,29 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	src_len;
 
-	i = 0;
+	src_len = ft_strlen(src);
 	if (dstsize == 0)
-		return(ft_strlen(src));
-	while (i != (int)dstsize - 1)
+		return (src_len);
+	if (src_len < dstsize)
+		ft_memcpy(dst, src, src_len + 1);
+	else if (dstsize != 0)
 	{
-		dst[i] = src[i];
-		i++;
+		ft_memcpy(dst, src, dstsize - 1);
+		dst[dstsize - 1] = '\0';
 	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	return (src_len);
 }
 
 // int main(void)
 // {
-// 	char str[15] = "Hello world";
+// 	char str[12] = "hello world";
 // 	char str2[10] = "chat chat";
 
-// 	printf("%zu",ft_strlcpy(str, str2, 0));
-// 	printf("%s",str);
+// 	// printf("%zu\n",ft_strlcpy(str, str2, 9));
+// 	// printf("%s\n",str);
+// 	printf("%zu\n",ft_strlcpy(str, str2, 0));
+// 	printf("%s\n",str);
 // 	return (0);
 // }

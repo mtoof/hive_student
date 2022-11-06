@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:28:07 by mtoof             #+#    #+#             */
-/*   Updated: 2022/10/28 16:37:25 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/04 15:12:36 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,31 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
-	int	dst_index;
+	size_t		dst_len;
+	size_t		src_len;
+	size_t		dst_index;
 
-	i = 0;
+	src_len = ft_strlen(src);
 	if (dstsize == 0)
-		return((dstsize) - strlen(dst) - 1);
-	dst_index = ft_strlen(dst);
-	while (i < ((int)dstsize - 2))
-	{
-		dst[dst_index] = src[i];
-		dst_index++;
-		i++;
-	}
-	dst[dst_index] = '\n';
-	return (ft_strlen(dst));
+		return (src_len);
+	dst_len = ft_strlen(dst);
+	dst_index = dst_len;
+	if (!src || !*src)
+		return (dst_len);
+	else if (dstsize < dst_len)
+		return (dstsize + src_len);
+	while (*src && dstsize > dst_len && dst_index != dstsize - 1)
+		*(dst + dst_index++) = *src++;
+	*(dst + dst_index) = '\0';
+	return (dst_len + src_len);
 }
 
-// int main(void)
+// int	main(void)
 // {
-// 	char	src[11] = "hello world";
-// 	char	dst[16] = "win win";
+// 	char	src[20] = "hello world";
+// 	char	dst[7] = "new new";
 
-// 	printf("%zu\n",strlcat(dst, src,0));
+// 	printf("%zu\n",ft_strlcat(dst, src,4));
 // 	printf("%s\n",dst);
 // 	return (0);
 // }

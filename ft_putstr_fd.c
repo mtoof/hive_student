@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 11:27:53 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/04 15:13:13 by mtoof            ###   ########.fr       */
+/*   Created: 2022/11/04 14:37:08 by mtoof             #+#    #+#             */
+/*   Updated: 2022/11/04 16:30:48 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include	"libft.h"
 
-int	ft_isprint(int c)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	if (fd != -1 && s)
+	{
+		while (s[i] != '\0')
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
+	}
 }

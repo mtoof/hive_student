@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:04:47 by mtoof             #+#    #+#             */
-/*   Updated: 2022/10/28 16:37:16 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/04 15:12:22 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (n-- && *s1)
+	while (n-- && (*s1 || *s2))
 	{
 		if (*s1 != *s2)
-			return (*s1 - *s2);
+			return ((unsigned char)*s1 - (unsigned char)*s2);
 		s1++;
 		s2++;
 	}
@@ -26,8 +26,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 // int	main(void)
 // {
-// 	char	str1[] = "helo0";
-// 	char	str2[] = "hel";
+// 	char	str1[] = "hel\0hel";
+// 	char	str2[] = "hel\0hel";
 
 // 	printf("%d\n", ft_strncmp(str1, str2, 15));
 // 	printf("%d", strncmp(str1, str2, 15));
