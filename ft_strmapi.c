@@ -1,48 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 17:47:23 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/06 16:38:10 by mtoof            ###   ########.fr       */
+/*   Created: 2022/11/06 18:01:45 by mtoof             #+#    #+#             */
+/*   Updated: 2022/11/06 18:17:53 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned	int, char))
 {
-	char			*str;
-	size_t			i;
-	unsigned int	s_len;
+	char	*str;
+	size_t	index;
+	size_t	s_len;
 
-	i = 0;
 	if (!s)
-		return (0);
+		return ((void *)0);
+	index = 0;
 	s_len = ft_strlen(s);
-	str = malloc(len + 1);
+	str = malloc(sizeof(char *) * s_len + 1);
 	if (!str)
-		return (0);
-	if (start >= s_len)
-	{
-		str[0] = '\0';
-		return (str);
-	}
-	while (i < len && s)
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	str[i] = '\0';
+		return ((void *)0);
+	while (s[index++])
+		str[index] = (*f)(index, s[index]);
+	str[index++] = '\0';
 	return (str);
 }
 
-// int	main(void)
+// int main()
 // {
-// 	char	str[20] = "hello world";
-
-// 	printf("%s\n", ft_substr(str, 0, 12));
-// 	return (0);
+// 	char	s[] = "hello world";
 // }
