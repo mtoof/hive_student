@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:13:33 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/04 17:36:18 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/07 11:21:06 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	n = 0;
 	sign = 1;
-	while ((str[i] <= '\v' && str[i] >= '\t') || str[i] == '\n'
-		|| str[i] == '\r' || str[i] == '\f' || str[i] == '\t' || str[i] == ' ')
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	if (str[i] == '-')
 		sign = sign * -1;
