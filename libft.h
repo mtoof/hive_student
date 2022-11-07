@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 14:26:15 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/06 16:58:33 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/06 21:48:43 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 char	*ft_strchr(const char *s, int c);
+char	**ft_split(char const *s, char c);
 char	*ft_strrchr(const char *s, int c);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);

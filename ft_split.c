@@ -1,40 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 18:01:45 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/06 21:28:46 by mtoof            ###   ########.fr       */
+/*   Created: 2022/11/06 21:34:00 by mtoof             #+#    #+#             */
+/*   Updated: 2022/11/06 23:01:28 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned	int, char))
+static	int		count(char const *s, char c)
 {
+	
+}
+char	**ft_split(char const *s, char c)
+{
+	// size_t	s_len;
+	int		index;
+	int		str_indx;
 	char	*str;
-	size_t	index;
-	size_t	s_len;
-
+	char	**str2;
+	
 	if (!s)
 		return ((void *)0);
 	index = 0;
-	s_len = ft_strlen(s);
-	str = malloc(sizeof(char) * (s_len + 1));
+	while (s[index] != c)
+		index++;
+	str = malloc(sizeof(char) * (index + 1));
 	if (!str)
 		return ((void *)0);
-	while (s[index])
+	str_indx = 0;
+	while(str_indx < index)
 	{
-		str[index] = f(index, s[index]);
-		index++;
+		str[str_indx] = s[str_indx];
+		str_indx++;
 	}
-	str[index++] = '\0';
-	return (str);
+	str[str_indx++] = '\0';
+	str2 = &str;
+	return (str2);
 }
 
-// int main()
+// int main(void)
 // {
-// 	char	s[] = "hello world";
+// 	char	str[] = "Hello world";
+
+// 	printf("%p\n", ft_split(str,'o'));
+// 	return (0);
 // }

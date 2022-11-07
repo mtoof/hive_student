@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:40:20 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/04 15:12:40 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/06 20:53:16 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ char	*ft_strdup(const char *s1)
 {
 	char	*str;
 	size_t	len;
-	size_t	i;
 
-	i = 0;
 	len = ft_strlen(s1);
 	str = malloc(sizeof(char) * len + 1);
 	if (!str)
