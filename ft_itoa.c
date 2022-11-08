@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 10:59:27 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/07 18:01:52 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/08 12:10:34 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ static int	nlen(int n)
 		i++;
 	}
 	if (n < 10 && n != 0)
-			n = n % 10;
-		i++;
+		n = n % 10;
+	i++;
 	return (i);
 }
 
-static char	*handle(char	*num_str, int n, int n_len)
+static char	*handle(char *num_str, int n, int n_len)
 {
 	int	index;
 	int	triger;
@@ -66,29 +66,43 @@ static char	*handle(char	*num_str, int n, int n_len)
 	return (num_str);
 }
 
+static char	*handle_min(char *num_str, int n, int n_len)
+{
+	int	index;
+
+	index = n_len;
+	while (n_len-- > 2)
+	{
+		if (n < 0)
+		{
+			num_str[0] = '-';
+			num_str[1] = '2';
+			n = 147483648;
+		}
+		if (n < 10)
+			num_str[n_len] = n + '0';
+		if (n >= 10)
+		{
+			num_str[n_len] = (n % 10) + '0';
+			n = n / 10;
+		}
+	}
+	num_str[index++] = '\0';
+	return (num_str);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*num_str;
 	int		n_len;
 
-	if (!n)
-		return ((void *)0);
 	n_len = nlen(n);
 	num_str = (char *)malloc(sizeof(char) * n_len + 1);
 	if (!num_str)
 		return ((void *)0);
-	// if (n == -2147483648)
-	// {
-		
-	// }
-	handle(num_str, n, n_len);
+	if (n == -2147483648)
+		handle_min(num_str, n, n_len);
+	else
+		handle(num_str, n, n_len);
 	return (num_str);
-}
-
-int main(void)
-{
-	int i = -2147483648;
-
-	printf("%s", ft_itoa(i));
-	return (0);
 }
