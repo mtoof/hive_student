@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:47:23 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/06 16:38:10 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/09 13:59:47 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (0);
 	s_len = ft_strlen(s);
+	if (start >= s_len)
+		len = 0;
+	if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
 	str = malloc(len + 1);
 	if (!str)
 		return (0);
-	if (start >= s_len)
-	{
-		str[0] = '\0';
-		return (str);
-	}
 	while (i < len && s)
 	{
 		str[i] = s[start + i];
