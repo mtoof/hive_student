@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:37:15 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/09 18:39:24 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/10 16:58:07 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,41 @@ static int	words_count(char const *str, char c)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == c && str[i - 1] != c)
+		if (str[i] == c && str[i + 1] != c && str[i + 1] != '\0')
 			c_counter++;
 		i++;
 	}
 	return (c_counter);
 }
 
-static void	words_len(char const *str, char c, char **new_str)
+static void	words_len(char const *s, char c, char **new_str)
 {
-	int		i;
 	int		j;
+	int		i;
 	int		len;
 
 	len = 0;
-	i = 0;
 	j = 0;
-	while (str[i])
+	while (*s)
 	{
-		if (str[i] != c)
-			len++;
-		else
+		while (*s == c && *s)
+			s++;
+		while (s[i] != c && *s)
 		{
-			new_str[j] = (char *)malloc(len + 1 * sizeof(char));
-			j++;
-			len = 0;
+			len++;
+			i++;
 		}
-		i++;
+		new_str[j++] = (char *)malloc(len + 1 * sizeof(char));
+		if (!new_str[j])
+		{
+			while (j--)
+				free(new_str[j]);
+		}
+		while(len--)
+		{
+			
+		}
+		len = 0;
 	}
 }
 
@@ -61,20 +69,21 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	words_c = words_count(s, c);
-	new_str = (char **)malloc(sizeof(char) * words_c + 1);
+	new_str = (char **)malloc(sizeof(*new_str) * words_c + 1);
 	if (!new_str)
+	{
+		free(new_str);
 		return (NULL);
+	}
 	words_len(s, c, new_str);
 	return (new_str);
 }
 
 int	main(void)
 {
-	int	i = 0;
 	char	c = ' ';
 	char	**ptr;
-	int		c_counter = 0;
-	char	str[] = "hello    my friend";
+	char	str[] = "    hello    my friend";
 
 	ptr = ft_split(str, c);
 	printf("%s\n", ptr[1]);
