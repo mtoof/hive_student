@@ -6,7 +6,7 @@
 /*   By: sepehr <sepehr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:02:30 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/12 01:02:00 by sepehr           ###   ########.fr       */
+/*   Updated: 2022/11/12 23:08:32 by sepehr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (new_str);
 }
 
-// while (*s1)
-// 	new_str[index++] = *s1++;
-// while (*s2)
-// 	new_str[index++] = *s2++;
-// new_str[index++] = '\0';
 // int	main()
 // {
 //   char  s1[] = "hello world";
