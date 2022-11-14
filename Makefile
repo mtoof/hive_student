@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sepehr <sepehr@student.42.fr>              +#+  +:+       +#+         #
+#    By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 15:50:23 by mtoof             #+#    #+#              #
-#    Updated: 2022/11/12 01:17:06 by sepehr           ###   ########.fr        #
+#    Updated: 2022/11/14 15:45:02 by mtoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,27 +16,29 @@ SRC = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c	\
 		ft_toupper.c ft_memcmp.c ft_memchr.c ft_strncmp.c ft_strnstr.c ft_strrchr.c	\
 		ft_strchr.c ft_strlcat.c ft_strlcpy.c ft_strdup.c ft_calloc.c ft_atoi.c \
 		ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_substr.c ft_strjoin.c	\
-		ft_putendl_fd.c ft_strtrim.c ft_strmapi.c ft_itoa.c ft_striteri.c \
-		ft_split.c
+		ft_putendl_fd.c ft_strtrim.c ft_strmapi.c ft_itoa.c ft_striteri.c ft_split.c
 OBJ = ft_bzero.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o	\
 		ft_isprint.o ft_memset.o ft_memcpy.o ft_memmove.o ft_strlen.o ft_tolower.o	\
 		ft_toupper.o ft_memcmp.o ft_memchr.o ft_strncmp.o ft_strnstr.o ft_strrchr.o	\
 		ft_strchr.o  ft_strlcat.o ft_strlcpy.o ft_strdup.o ft_calloc.o ft_atoi.o \
 		ft_putchar_fd.o ft_putstr_fd.o ft_putnbr_fd.o ft_substr.o ft_strjoin.o	\
-		ft_putendl_fd.o ft_strtrim.o ft_strmapi.o ft_itoa.o ft_striteri.o \
-		ft_split.o
+		ft_putendl_fd.o ft_strtrim.o ft_strmapi.o ft_itoa.o ft_striteri.o ft_split.o
+SRC_B = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c \
+		ft_lstadd_back_bonus.c
+OBJ_B = ft_lstnew_bonus.o ft_lstadd_front_bonus.o ft_lstsize_bonus.o ft_lstlast_bonus.o \
+		ft_lstadd_back_bonus.o
 HEADER = libft.h
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 	
 $(NAME):
-	cc $(FLAGS) -c $(SRC)
+	cc $(FLAGS) -c $(SRC) -I $(HEADER)
 	ar rcs $(NAME) $(OBJ)
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ)
+bonus:
+	cc $(FLAGS) -c $(SRC_B) -I $(HEADER)
+	ar rcs $(NAME) $(OBJ_B)
 
 clean:
 	/bin/rm -f *.o

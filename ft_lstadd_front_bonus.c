@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:58:35 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/11 17:52:54 by mtoof            ###   ########.fr       */
+/*   Created: 2022/11/14 12:12:13 by mtoof             #+#    #+#             */
+/*   Updated: 2022/11/14 14:05:32 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	unsigned char	*ptr;
-
-	ptr = s;
-	while (n--)
-		*ptr++ = 0;
+	if (lst == NULL || new == NULL)
+		return ;
+	new ->next = *lst;
+	*lst = new;
 }
-
-// int	main(void)
-// {
-// 	char	str[]= "Hello world";
-
-// 	ft_bzero(str, 5);
-// 	printf("%s", str);
-// 	return (0);
-// }

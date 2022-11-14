@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sepehr <sepehr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:33:28 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/12 22:06:58 by sepehr           ###   ########.fr       */
+/*   Updated: 2022/11/11 17:11:12 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	size_alloc = size * count;
 	if (count > 0 && size > 0)
-		if (size_alloc % count != 0 || size_alloc % size != 0)
+		if (size_alloc % count != 0 || size % size != 0)
 			return (NULL);
 	alloc_mem = (void *)malloc(sizeof(char) * size_alloc);
 	if (!alloc_mem)

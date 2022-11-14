@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:58:35 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/11 17:52:54 by mtoof            ###   ########.fr       */
+/*   Created: 2022/11/14 10:54:46 by mtoof             #+#    #+#             */
+/*   Updated: 2022/11/14 12:17:43 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+t_list	*ft_lstnew(void *content)
 {
-	unsigned char	*ptr;
+	t_list	*lstnew;
 
-	ptr = s;
-	while (n--)
-		*ptr++ = 0;
+	lstnew = malloc(sizeof(t_list));
+	if (!lstnew)
+		return (NULL);
+	lstnew->content = content;
+	lstnew->next = NULL;
+	return (lstnew);
 }
-
-// int	main(void)
-// {
-// 	char	str[]= "Hello world";
-
-// 	ft_bzero(str, 5);
-// 	printf("%s", str);
-// 	return (0);
-// }

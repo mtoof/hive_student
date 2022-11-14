@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 10:59:27 by mtoof             #+#    #+#             */
-/*   Updated: 2022/11/10 15:44:15 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/11/14 15:32:00 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_itoa(int n)
 	n_len = nlen(n);
 	num_str = (char *)malloc(sizeof(char) * n_len + 1);
 	if (!num_str)
-		return ((void *)0);
+		return (NULL);
 	num_str[n_len--] = '\0';
 	if (number < 0)
 	{
@@ -54,3 +54,11 @@ char	*ft_itoa(int n)
 	num_str[n_len] = number + '0';
 	return (num_str);
 }
+
+// int main(void)
+// {
+// 	int	i;
+// 	i = 123;
+
+// 	printf("%s", ft_itoa(i));
+// }
