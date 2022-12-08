@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_convert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 14:57:32 by mtoof             #+#    #+#             */
-/*   Updated: 2022/12/07 15:47:05 by mtoof            ###   ########.fr       */
+/*   Created: 2022/12/08 18:36:11 by mtoof             #+#    #+#             */
+/*   Updated: 2022/12/08 21:23:14 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_convert(unsigned int num, int base, char sign)
 {
-	t_list	*last;
+	int	count;
 
-	last = lst;
-	if (!last)
-		return (NULL);
-	while (last->next != NULL)
-		last = last->next;
-	return (last);
+	count = 0;
+	if (num > 15)
+	{
+		count += ft_convert((num / base), base, sign);
+		num = num % base;
+	}
+	if (num < 10)
+	{
+		ft_putchar((num % base) + '0');
+		count++;
+	}
+	if (num >= 10 && num <= 15)
+	{
+		ft_putchar((num % base) + sign);
+		count++;
+	}
+	return (count);
 }
