@@ -6,30 +6,31 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:55:28 by mtoof             #+#    #+#             */
-/*   Updated: 2022/12/08 20:46:33 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/12/13 13:47:15 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void	ft_putnbr(int nb)
+int	ft_putnbr(unsigned int nb, int base, int sign)
 {
-	if (nb == -2147483648)
+	int	counter;
+
+	counter = 0;
+	if (sign == 1)
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		nb = 147483648;
-	}
-	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
+		if ((int)nb < 0)
+		{
+		counter += ft_putchar('-');
+		nb = (int)nb * -1;
+		}
 	}
 	if (nb < 10)
-		ft_putchar(nb + '0');
-	if (nb >= 10)
+		counter += ft_putchar(nb + '0');
+	else if (nb >= 10)
 	{
-		ft_putnbr(nb / 10);
-		ft_putchar(nb % 10 + '0');
+		counter += ft_putnbr(nb / base, base, sign);
+		counter += ft_putchar(nb % base + '0');
 	}
+	return (counter);
 }

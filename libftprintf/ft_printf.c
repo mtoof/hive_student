@@ -6,40 +6,33 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:42:22 by mtoof             #+#    #+#             */
-/*   Updated: 2022/12/08 21:24:25 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/12/13 13:47:23 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
 static int	ft_check(va_list args, const char *tmp)
 {
-	char			*s;
 	unsigned int	i;
 	int				counter;
 
 	counter = 0;
 	i = 0;
 	if (*tmp == 'c')
-	{
-		ft_putchar(va_arg(args, int));
-		counter++;
-	}
+		counter += ft_putchar(va_arg(args, int));
 	else if (*tmp == 's')
-		ft_putstr(va_arg(args, char *));
-	else if (*tmp == 'X' || *tmp == 'x' || *tmp == 'd' || *tmp == 'i')
-	{
-		i = (va_arg(args, unsigned int));
-		if (*tmp == 'X')
-			counter += ft_convert(i, 16, 55);
-		else if (*tmp == 'x')
-			counter += ft_convert(i, 16, 87);
-		else if (*tmp == 'd' || *tmp == 'i')
-			ft_putnbr(i);
-	}
+		counter += ft_putstr(va_arg(args, char *));
+	else if (*tmp == 'X')
+		counter += ft_convert(va_arg(args, unsigned int), 16, 55);
+	else if (*tmp == 'x')
+		counter += ft_convert(va_arg(args, unsigned int), 16, 87);
+	else if (*tmp == 'd' || *tmp == 'i')
+		counter += ft_putnbr(va_arg(args, int), 10, 1);
+	else if (*tmp == 'u')
+		counter += ft_putnbr(va_arg(args, int), 10, -1);
 	else if (*tmp == '%')
-		ft_putchar('%');
+		counter += ft_putchar('%');
 	return (counter);
 }
 
@@ -68,14 +61,11 @@ int	ft_printf(const char *tmp, ...)
 	return (counter);
 }
 
-int main(void)
-{
-	int ptr;
+// int main(void)
+// {
+// 	int ptr;
 
-	ptr = 0;
-	ptr = ft_printf("printf x: %x\n", -1);
-	printf("%d\n", ptr);
-	ptr = printf("printf x: %x\n", -1);
-	printf("%d\n", ptr);
-	return (0);
-}
+// 	ptr = 0;
+// 	ptr = ft_printf("printf x: %d\n", -2147483648);
+// 	return (0);
+// }

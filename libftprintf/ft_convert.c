@@ -6,31 +6,29 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:36:11 by mtoof             #+#    #+#             */
-/*   Updated: 2022/12/08 21:23:14 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/12/12 09:47:12 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_convert(unsigned int num, int base, char sign)
+int	ft_convert(unsigned long num, int base, char sign)
 {
-	int	count;
+	int	counter;
 
-	count = 0;
+	counter = 0;
 	if (num > 15)
 	{
-		count += ft_convert((num / base), base, sign);
+		counter += ft_convert((num / base), base, sign);
 		num = num % base;
 	}
 	if (num < 10)
-	{
-		ft_putchar((num % base) + '0');
-		count++;
+	{	
+		counter += ft_putchar((num % base) + '0');
 	}
 	if (num >= 10 && num <= 15)
 	{
-		ft_putchar((num % base) + sign);
-		count++;
+		counter += ft_putchar((num % base) + sign);
 	}
-	return (count);
+	return (counter);
 }
