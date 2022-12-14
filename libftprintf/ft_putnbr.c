@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:55:28 by mtoof             #+#    #+#             */
-/*   Updated: 2022/12/13 13:47:15 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/12/14 13:44:20 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_putnbr(unsigned int nb, int base, int sign)
 	int	counter;
 
 	counter = 0;
-	if (sign == 1)
+	if (sign == 0)
 	{
 		if ((int)nb < 0)
 		{
