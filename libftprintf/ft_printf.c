@@ -63,10 +63,7 @@ int	ft_printf(const char *tmp, ...)
 	while (*tmp)
 	{
 		if (*tmp != '%')
-		{
-			ft_putchar(*tmp);
-			counter++;
-		}
+			counter += ft_putchar(*tmp);
 		else if (*tmp == '%')
 		{
 			tmp++;
