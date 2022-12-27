@@ -207,7 +207,6 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
 		return (NULL);
 	line = NULL;
-	temp_list = NULL;
 	read_and_buffer(fd, &temp_list);
 	if (temp_list == NULL)
 		return (NULL);
