@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sepehr <sepehr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 12:59:02 by mtoof             #+#    #+#             */
-/*   Updated: 2022/12/26 22:57:29 by sepehr           ###   ########.fr       */
+/*   Created: 2022/12/27 15:07:14 by mtoof             #+#    #+#             */
+/*   Updated: 2022/12/29 15:34:58 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,21 @@
 # define GET_NEXT_LINE_H
 
 # include <stdlib.h>
-# include <unistd.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <unistd.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 8
 # endif
 
-typedef struct s_list
-{
-	char			*content;
-	struct s_list	*next;
-}					t_list;
-
 //gnl
-char				*get_next_line(int fd);
-void				clean_list(t_list **list);
-void				extract_line(t_list *temp_list, char **line);
-void				read_and_buffer(int fd, t_list **list);
-void				add_to_list(t_list **list, char *buffer, int readed_chr);
+char	*get_next_line(int fd);
 //gnl_utils
-size_t				ft_strlen(const char *s);
-t_list				*ft_lstlast(t_list *list);
-int					found_new_line(t_list *tmp_list);
-void				free_tmp_list(t_list *tmp_list);
-void				generate_line(char **line, t_list *tmp_list);
+size_t	ft_strlen(const char *s);
+void	ft_bzero(void *s, size_t n);
+char	*ft_strchr(const char *s, int c);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
