@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:07:21 by mtoof             #+#    #+#             */
-/*   Updated: 2022/12/29 18:15:42 by mtoof            ###   ########.fr       */
+/*   Updated: 2022/12/30 12:22:15 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t		s2_len;
 	size_t		index;
 	char		*new_str;
-	int			i;
 
 	if (!s1 || !s2)
 		return (NULL);
