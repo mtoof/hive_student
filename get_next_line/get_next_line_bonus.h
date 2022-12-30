@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 15:07:14 by mtoof             #+#    #+#             */
-/*   Updated: 2022/12/30 15:08:00 by mtoof            ###   ########.fr       */
+/*   Created: 2022/12/30 14:55:27 by mtoof             #+#    #+#             */
+/*   Updated: 2022/12/30 15:08:07 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 8
 # endif
-
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);

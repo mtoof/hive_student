@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 15:07:18 by mtoof             #+#    #+#             */
-/*   Updated: 2022/12/30 15:07:43 by mtoof            ###   ########.fr       */
+/*   Created: 2022/12/30 14:55:30 by mtoof             #+#    #+#             */
+/*   Updated: 2022/12/30 15:01:37 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*found_new_line(char *buffer)
 {
@@ -86,15 +86,15 @@ static char	*read_and_stash(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buffer = read_and_stash(fd, buffer);
-	if (!buffer)
+	buffer[fd] = read_and_stash(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	line = found_new_line(buffer);
-	buffer = trim_buffer(buffer);
+	line = found_new_line(buffer[fd]);
+	buffer[fd] = trim_buffer(buffer[fd]);
 	return (line);
 }
