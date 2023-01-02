@@ -98,3 +98,20 @@ char	*get_next_line(int fd)
 	buffer = trim_buffer(buffer);
 	return (line);
 }
+
+// int	main(void)
+// {
+// 	int		fd;
+// 	char	*line;
+
+// 	fd = open("test/big_line_with_nl", O_RDONLY);
+// 	while (1)
+// 	{
+// 		line = get_next_line(fd);
+// 		printf("%s", line);
+// 		if (line == NULL)
+// 			break ;
+// 		free(line);
+// 	}
+// 	return (0);
+// }
