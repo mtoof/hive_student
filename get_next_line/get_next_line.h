@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:07:14 by mtoof             #+#    #+#             */
-/*   Updated: 2022/12/30 15:08:00 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/01/02 12:58:58 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define GET_NEXT_LINE_H
 
 # include <stdlib.h>
-// # include <sys/types.h>
-// # include <sys/uio.h>
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE

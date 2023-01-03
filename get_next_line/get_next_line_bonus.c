@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:55:30 by mtoof             #+#    #+#             */
-/*   Updated: 2022/12/30 15:01:37 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/01/03 18:14:03 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static char	*found_new_line(char *buffer)
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2, sizeof(char));
+	if (!line)
+		return (NULL);
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 	{
@@ -50,6 +52,8 @@ static char	*trim_buffer(char *buffer)
 	}
 	next_line = ft_calloc((ft_strlen(buffer) - index_buffer + 1),
 			sizeof(char *));
+	if (!next_line)
+		return (NULL);
 	index_buffer++;
 	index_nextline = 0;
 	while (buffer[index_buffer])
@@ -68,6 +72,8 @@ static char	*read_and_stash(int fd, char *buffer)
 		buffer = ft_calloc(1, 1);
 	readed_char = 1;
 	stash = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!stash)
+		return (NULL);
 	while (readed_char > 0)
 	{
 		readed_char = read(fd, stash, BUFFER_SIZE);
